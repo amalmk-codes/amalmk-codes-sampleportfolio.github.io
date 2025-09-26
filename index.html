@@ -18,17 +18,51 @@
       }
     </script>
     <style>
+      /* A more vibrant, gradient-based background for the body */
       body {
         font-family: 'Inter', sans-serif;
-        background-color: #0d1117;
+        background-color: #0b0c10;
+        background: radial-gradient(circle at top, #111425, #0a0b12);
+        color: #e2e8f0;
       }
-      .card-gradient {
-        background: linear-gradient(135deg, #1f2a36, #111827);
+      
+      /* Glowing border and background for the main card */
+      .glowing-card {
+        position: relative;
+        background: #1a202c;
+        border-radius: 1.5rem;
+        transition: all 0.3s ease-in-out;
+        z-index: 1;
       }
-      .link-hover:hover {
-        color: #6366f1; /* Tailwind's indigo-500 */
-        transform: translateY(-2px);
+      .glowing-card::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        background: linear-gradient(45deg, #a855f7, #6366f1, #2dd4bf);
+        background-size: 400%;
+        border-radius: 1.75rem;
+        z-index: -1;
+        animation: glow 10s ease-in-out infinite;
+        opacity: 0.5;
+        filter: blur(8px);
       }
+      
+      @keyframes glow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+
+      /* Hover effect for links and buttons */
+      .link-glow:hover {
+        color: #2dd4bf; /* Teal color for vibrancy */
+        transform: translateY(-3px);
+        text-shadow: 0 0 8px rgba(45, 212, 191, 0.7);
+      }
+
       /* Custom scrollbar for a sleek look */
       ::-webkit-scrollbar {
           width: 8px;
@@ -37,7 +71,7 @@
           background: #1f2a36;
       }
       ::-webkit-scrollbar-thumb {
-          background: #4b5563; /* Tailwind's gray-600 */
+          background: #4b5563;
           border-radius: 4px;
       }
     </style>
@@ -46,12 +80,12 @@
     <div class="flex flex-col items-center justify-center min-h-screen p-4">
 
         <!-- Main Profile Card -->
-        <div class="w-full max-w-2xl mx-auto rounded-3xl overflow-hidden shadow-2xl card-gradient p-8 md:p-12 mb-8">
+        <div class="w-full max-w-2xl mx-auto rounded-3xl overflow-hidden shadow-2xl glowing-card p-8 md:p-12 mb-8">
             <!-- Profile Header -->
             <div class="text-center mb-10">
-                <img src="https://placehold.co/120x120/1f2937/d1d5db?text=AM" alt="Profile picture of Amal" class="rounded-full mx-auto mb-4 border-4 border-gray-700">
+                <img src="https://placehold.co/120x120/1f2937/e2e8f0?text=AM" alt="Profile picture of Amal" class="rounded-full mx-auto mb-4 border-4 border-gray-700">
                 <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight">AMAL M K</h1>
-                <p class="text-lg md:text-xl font-medium text-purple-400 mt-2">Passionate Software Developer</p>
+                <p class="text-lg md:text-xl font-medium text-cyan-400 mt-2">Passionate Software Developer</p>
             </div>
 
             <!-- About Section -->
@@ -83,9 +117,8 @@
             <div class="bg-gray-800/50 rounded-2xl p-6">
                 <h2 class="text-2xl font-bold text-gray-100 mb-3">Projects</h2>
                 <p class="text-gray-400">This is where you can showcase your work. Add a list of projects with descriptions and links to their repositories or live demos.</p>
-                <a href="#" class="inline-block mt-4 text-purple-400 font-semibold link-hover transition-all duration-300">View my projects →</a>
+                <a href="#" class="inline-block mt-4 text-cyan-400 font-semibold link-glow transition-all duration-300">View my projects →</a>
             </div>
-
         </div>
 
         <!-- Social Links/Footer -->
@@ -93,9 +126,9 @@
             <p>Connect with me:</p>
             <div class="flex justify-center space-x-4 mt-2">
                 <!-- Replace # with your actual profile links -->
-                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 link-hover">GitHub</a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 link-hover">LinkedIn</a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 link-hover">Email</a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 link-glow">GitHub</a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 link-glow">LinkedIn</a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors duration-300 link-glow">Email</a>
             </div>
             <p class="mt-4">&copy; 2024 Amal M K. All Rights Reserved.</p>
         </footer>
